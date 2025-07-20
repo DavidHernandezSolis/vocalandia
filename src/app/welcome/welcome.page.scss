@@ -1,0 +1,301 @@
+.welcome-content {
+    //   --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    // --background: url('/assets/img/welcome.png') center center / cover no-repeat;
+
+    // --background: url('/assets/img/welcome_full.jpeg') center center / 100% 100% no-repeat;
+
+    --background: linear-gradient(135deg, #a8e6cf 0%, #88d8c0 50%, #6faadb 100%);
+
+    //   linear-gradient(135deg, rgba(102, 126, 234, 0.4) 0%, rgba(118, 75, 162, 0.4) 100%),
+    //   url('/assets/img/welcome.png') center center / cover no-repeat;
+    .img-background {
+        margin-top: -10px;
+        height: 90vh;
+        z-index: 10;
+        // background: url('/assets/img/welcome_no_fondo.png') center center / 100% 100% no-repeat;
+        // transform: rotate(-15deg);
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        // height: 100vh;
+        // width: 100vw;
+        // background-size: cover;
+        // background-position: center;
+        // background-repeat: no-repeat;
+        // position: absolute;
+        // top: 0;
+        // left: 0;
+    }
+
+    @media (max-width: 992px) {
+        .img-background {
+            height: 100%;
+            margin-top: 0;
+        }
+    }
+
+
+    .welcome-container {
+        z-index: 2;
+        // justify-items: center;
+        //   display: flex;
+
+        //     display: flex;
+        //     flex-direction: column;
+        //     justify-content: center;
+        //     align-items: center;
+        //     min-height: 100vh;
+        //     // padding: 20px;
+        //     // background: url('/assets/img/welcome_no_fondo.png') center center / 100% 100% no-repeat, transform: rotate(90deg);
+        //     text-align: center;
+        //     color: white;
+    }
+
+
+
+    .title-section {
+        margin-bottom: 10px;
+        // background: center;
+        z-index: 10;
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin: 0;
+            opacity: 0.9;
+            z-index: 10;
+            position: relative;
+        }
+    }
+
+    .description {
+        margin-bottom: 30px;
+        max-width: 90%;
+        text-align: center;
+        z-index: 10;
+        position: relative;
+        // p {
+        font-size: 1.4rem;
+        //     line-height: 1.5;
+        //     opacity: 0.9;
+        //     margin: 0;
+        // }
+    }
+
+    // .button-container {
+    //     width: 100%;
+    //     // max-width: 280px;
+    //     // margin-bottom: 30px;
+    //     justify-items: center;
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    // }
+    ion-col {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly; // Espaciado igual
+        height: 100%; // Para que ocupe todo el espacio
+    }
+
+    @keyframes wobble {
+        0% {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.03);
+            opacity: 0.9;
+        }
+
+        100% {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+
+    .start-button {
+        --background: #28a745;
+        --background-hover: #218838;
+        --background-activated: #1e7e34;
+        // --box-shadow: 0 4px 16px rgba(40, 167, 69, 0.4);
+        --border-radius: 20px;
+        animation: wobble 2s infinite;
+        // height: 56px;
+        font-size: 3rem;
+        z-index: 10;
+        // padding-top: 0px;
+        // padding-bottom: 0px;
+
+        //  text-align: center;
+        //  width: 100%;
+        // margint;
+        // justify-items: center;
+
+        // padding: 0.5rem;
+        // font-weight: 600;
+        // text-transform: none;
+
+        ion-icon {
+            font-size: 3rem;
+        }
+    }
+
+
+}
+
+
+
+/* Elementos decorativos */
+.floating-decorations {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.7;
+    animation: float 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.balloon.balloon-1 {
+    top: 6%;
+    left: 5%;
+    animation-delay: 0s;
+    animation-duration: 5s;
+}
+
+.balloon.balloon-2 {
+    top: 2%;
+    right: 15%;
+    animation-delay: 1s;
+    animation-duration: 6s;
+}
+
+.balloon.balloon-3 {
+    bottom: -1.1%;
+    left: 30%;
+    animation-delay: 2s;
+    animation-duration: 7s;
+}
+
+.balloon.balloon-4 {
+    bottom: 17%;
+    right: 5%;
+    animation-delay: 0.5s;
+    animation-duration: 5.5s;
+}
+
+.star {
+    position: absolute;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    animation: twinkle 3s ease-in-out infinite;
+}
+
+.star.star-1 {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+
+.star.star-3 {
+    bottom: 10%;
+    right: 20%;
+    animation-delay: 2s;
+}
+
+.star.star-4 {
+    bottom: 15%;
+    left: 60%;
+    animation-delay: 0.5s;
+}
+
+.star.star-5 {
+    top: 50%;
+    left: 1%;
+    animation-delay: 1.5s;
+}
+
+.bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    animation: bubble-float 8s linear infinite;
+}
+
+.bubble.bubble-1 {
+        width: 400px;
+    height: 400px;
+    left: 70%;
+    top: -30%;
+    z-index: 10;
+    animation-delay: 0s;
+    animation-duration: 10s;
+    z-index: 1;
+}
+
+.bubble.bubble-2 {
+        width: 100px;
+    height: 100px;
+    left: -30px;
+    top: 60%;
+    z-index: 1;
+    animation-delay: 3s;
+    animation-duration: 12s;
+}
+
+.bubble.bubble-3 {
+    width: 35px;
+    height: 35px;
+    left: 60%;
+    animation-delay: 6s;
+    animation-duration: 9s;
+}
+
+// Responsive design
+// @media (max-height: 600px) {
+//     .welcome-content .welcome-container {
+//         .logo-container ion-img {
+//             width: 80px;
+//             height: 80px;
+//             border-radius: 40px;
+//         }
+
+//         .title-section {
+//             margin-bottom: 20px;
+
+//             h1 {
+//                 font-size: 2rem;
+//             }
+
+//             h2 {
+//                 font-size: 1.3rem;
+//             }
+//         }
+
+//         .description {
+//             margin-bottom: 30px;
+//         }
+//     }
+// }

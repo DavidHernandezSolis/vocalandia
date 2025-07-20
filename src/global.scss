@@ -1,12 +1,52 @@
-/*
- * App Global CSS
+// /*
+//  * App Global CSS
+//  * ----------------------------------------------------------------------------
+//  * Put style rules here that you want to apply globally. These styles are for
+//  * the entire app and not just one component. Additionally, this file can be
+//  * used as an entry point to import other CSS/Sass files to be included in the
+//  * output CSS.
+//  * For more information on global stylesheets, visit the documentation:
+//  * https://ionicframework.com/docs/layout/global-stylesheets
+//  */
+
+// /* Core CSS required for Ionic components to work properly */
+// @import "@ionic/angular/css/core.css";
+
+// /* Basic CSS for apps built with Ionic */
+// @import "@ionic/angular/css/normalize.css";
+// @import "@ionic/angular/css/structure.css";
+// @import "@ionic/angular/css/typography.css";
+// @import "@ionic/angular/css/display.css";
+
+// /* Optional CSS utils that can be commented out */
+// @import "@ionic/angular/css/padding.css";
+// @import "@ionic/angular/css/float-elements.css";
+// @import "@ionic/angular/css/text-alignment.css";
+// @import "@ionic/angular/css/text-transformation.css";
+// @import "@ionic/angular/css/flex-utils.css";
+
+// /**
+//  * Ionic Dark Mode
+//  * -----------------------------------------------------
+//  * For more info, please see:
+//  * https://ionicframework.com/docs/theming/dark-mode
+//  */
+
+// /* @import "@ionic/angular/css/palettes/dark.always.css"; */
+// /* @import "@ionic/angular/css/palettes/dark.class.css"; */
+// @import '@ionic/angular/css/palettes/dark.system.css';
+
+
+
+
+
+
+/*=============================================================================
+ * App Global CSS - Tema Terapia de Lenguaje para Niños
  * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * Colores terapéuticos: azules calmantes, verdes naturales y naranjas estimulantes
+ * Diseño amigable para niños de 6-10 años
+ =============================================================================
  */
 
 /* Core CSS required for Ionic components to work properly */
@@ -25,13 +65,401 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
+/* Dark mode deshabilitado para mayor claridad visual en terapia */
+// @import "@ionic/angular/css/palettes/dark.always.css"; 
+// @import "@ionic/angular/css/palettes/dark.class.css";
+// @import '@ionic/angular/css/palettes/dark.system.css';
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// Variables CSS personalizadas para terapia de lenguaje
+:root {
+    // Colores primarios terapéuticos
+    --ion-color-primary: #74b9ff;
+    --ion-color-primary-rgb: 116, 185, 255;
+    --ion-color-primary-contrast: #ffffff;
+    --ion-color-primary-contrast-rgb: 255, 255, 255;
+    --ion-color-primary-shade: #66a3e0;
+    --ion-color-primary-tint: #82c1ff;
+
+    // Verde calmante para éxito
+    --ion-color-success: #00cec9;
+    --ion-color-success-rgb: 0, 206, 201;
+    --ion-color-success-contrast: #ffffff;
+    --ion-color-success-contrast-rgb: 255, 255, 255;
+    --ion-color-success-shade: #00b5b1;
+    --ion-color-success-tint: #1ad4ce;
+
+    // Naranja estimulante para acción
+    --ion-color-warning: #fdcb6e;
+    --ion-color-warning-rgb: 253, 203, 110;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0, 0, 0;
+    --ion-color-warning-shade: #deb361;
+    --ion-color-warning-tint: #fdd17d;
+
+    // Rosa amigable para elementos especiales
+    --ion-color-secondary: #fd79a8;
+    --ion-color-secondary-rgb: 253, 121, 168;
+    --ion-color-secondary-contrast: #ffffff;
+    --ion-color-secondary-contrast-rgb: 255, 255, 255;
+    --ion-color-secondary-shade: #df6b94;
+    --ion-color-secondary-tint: #fd86b1;
+
+    // Colores de fondo suaves
+    --ion-background-color: #f8f9fa;
+    --ion-background-color-rgb: 248, 249, 250;
+    --ion-background-color-step-50: #f1f3f4;
+    --ion-background-color-step-100: #e8eaed;
+    --ion-background-color-step-150: #dadce0;
+    --ion-background-color-step-200: #bdc1c6;
+
+    // Texto amigable
+    --ion-text-color: #2d3436;
+    --ion-text-color-rgb: 45, 52, 54;
+    --ion-text-color-step-400: #636e72;
+    --ion-text-color-step-600: #636e72;
+
+    // Fuente amigable para niños
+    --ion-font-family: 'Comic Sans MS', 'Trebuchet MS', 'Arial', cursive, sans-serif;
+}
+
+// Estilos globales para toda la aplicación
+* {
+    font-family: var(--ion-font-family);
+}
+
+// Contenido principal con fondo gradiente terapéutico
+ion-content {
+    // --background: linear-gradient(135deg, #a8e6cf 0%, #88d8c0 50%, #6faadb 100%);
+    // --background: linear-gradient(135deg, #a8e6cf 0%, #c1ded5 50%, #ccd7e1 100%); //opcion 1
+    --background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 50%, #ebf3fd 100%);
+
+    // --background: linear-gradient(135deg, #c2e9da 0%, #bed6ce 50%, #ccd7e1 100%);
+    --color: var(--ion-text-color);
+}
+
+// Headers con estilo amigable
+ion-header {
+    ion-toolbar {
+        // --background: linear-gradient(135deg, #74b9ff, #00cec9); 
+        // --background: linear-gradient(90deg, #69d0ce, #4dcbc7); //opcion 1
+        --background:  #4dcbc7;
+        // --background: linear-gradient(135deg, #6c5ce7, #74b9ff);
+
+        --color: white;
+        --border-width: 0;
+        --min-height: 70px;
+
+        ion-title {
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        ion-buttons {
+            ion-button {
+                --color: white;
+                font-size: 20px;
+                --border-radius: 50%;
+                --background: rgba(255, 255, 255, 0.2);
+                margin: 8px;
+            }
+
+            ion-button:hover {
+                --background: rgba(255, 255, 255, 0.3);
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+
+// Botones globales con estilo terapéutico
+ion-button {
+    --border-radius: 25px;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: none;
+    --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+ion-button:not(.button-clear):not(.button-outline) {
+    --background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-success));
+    --color: white;
+}
+
+ion-button:hover {
+    transform: translateY(-3px);
+    --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+ion-button:active {
+    transform: translateY(-1px);
+}
+
+// Cards con estilo suave y amigable
+ion-card {
+    --background: rgba(255, 255, 255, 0.95);
+    --color: var(--ion-text-color);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    margin: 15px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+ion-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    border-color: var(--ion-color-primary);
+}
+
+ion-card-header {
+    padding: 20px;
+
+    ion-card-title {
+        color: var(--ion-color-primary);
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    ion-card-subtitle {
+        color: var(--ion-text-color-step-400);
+        font-size: 16px;
+        font-style: italic;
+    }
+}
+
+ion-card-content {
+    padding: 20px;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+// Items de lista amigables
+ion-item {
+    --background: rgba(255, 255, 255, 0.9);
+    --color: var(--ion-text-color);
+    --border-radius: 15px;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --inner-padding-end: 0px;
+    --inner-border-width: 0px;
+    margin: 8px 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+ion-item:hover {
+    transform: translateX(5px);
+    --background: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+ion-item ion-icon {
+    color: var(--ion-color-primary);
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+ion-item ion-label {
+    font-weight: 600;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+// Listas con espaciado amigable
+ion-list {
+    background: transparent;
+    padding: 15px 0;
+}
+
+ion-list-header {
+    color: var(--ion-color-primary);
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    margin: 10px 15px 20px 15px;
+    padding: 15px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+// Inputs amigables para niños
+ion-input,
+ion-textarea {
+    --background: rgba(255, 255, 255, 0.95);
+    --color: var(--ion-text-color);
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --border-radius: 20px;
+    --box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 18px;
+    margin: 10px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+ion-input:focus,
+ion-textarea:focus {
+    border-color: var(--ion-color-primary);
+    --box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1), 0 0 0 3px rgba(116, 185, 255, 0.3);
+}
+
+// Segments para navegación
+ion-segment {
+    --background: rgba(255, 255, 255, 0.9);
+    border-radius: 25px;
+    margin: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+ion-segment-button {
+    --color: var(--ion-text-color);
+    --color-checked: white;
+    --background-checked: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-success));
+    --border-radius: 20px;
+    font-weight: bold;
+    margin: 5px;
+}
+
+// Toasts amigables para feedback
+ion-toast {
+    --background: linear-gradient(135deg, var(--ion-color-success), var(--ion-color-primary));
+    --color: white;
+    --border-radius: 20px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+// Alerts con estilo amigable
+.alert-wrapper {
+    --background: rgba(255, 255, 255, 0.98);
+    --color: var(--ion-text-color);
+    border-radius: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.alert-head {
+    padding: 25px 20px 15px 20px;
+}
+
+.alert-title {
+    color: var(--ion-color-primary);
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.alert-message {
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.5;
+    padding: 10px 0;
+}
+
+// Loading spinner amigable
+ion-loading {
+    --background: rgba(255, 255, 255, 0.95);
+    --spinner-color: var(--ion-color-primary);
+    border-radius: 20px;
+}
+
+// Animaciones suaves para toda la app
+.page-transition-enter {
+    animation: slideInRight 0.4s ease-out;
+}
+
+.page-transition-leave {
+    animation: slideOutLeft 0.4s ease-in;
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+}
+
+// Utilidades adicionales para elementos terapéuticos
+.therapy-icon {
+    font-size: 48px;
+    color: var(--ion-color-primary);
+    text-align: center;
+    animation: gentle-float 3s ease-in-out infinite;
+}
+
+@keyframes gentle-float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.success-feedback {
+    background: linear-gradient(135deg, var(--ion-color-success), #1dd1a1);
+    color: white;
+    padding: 15px 25px;
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: gentle-bounce 0.6s ease-out;
+}
+
+@keyframes gentle-bounce {
+    0% {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.progress-indicator {
+    background: linear-gradient(45deg, var(--ion-color-warning), var(--ion-color-secondary));
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}

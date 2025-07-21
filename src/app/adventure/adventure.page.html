@@ -1,25 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-    <!-- Botón de regreso -->
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home" text="Atrás"></ion-back-button>
-    </ion-buttons>
+<app-header 
+  [title]="title" 
+  [showTitleOnMobile]="false"
+  backButtonHref="/home"
+  backButtonText="Atrás">
+</app-header>
 
-    <!-- Título centrado -->
-    @if (!isWebMobile) {
-    <ion-title>{{ title }}</ion-title>
-    }
-
-    <!-- Icono de usuario -->
-    <ion-buttons slot="end">
-      <ion-button class="user-icon">
-        <ion-icon name="person-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
+<ion-content >
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="12">
@@ -28,7 +14,7 @@
     </ion-row>
     <ion-row>
 
-      @if (!isWebMobile) {
+      @if (!isMobile) {
       <!-- <ion-col size="12"> -->
         <div class="adventure-container">
           @for (option of adventureOptions; track option.id; let i = $index) {
@@ -41,7 +27,7 @@
       }
 
 
-      @if (isWebMobile) {
+      @if (isMobile) {
       @for (option of adventureOptions; track option.id; let i = $index) {
       <ion-col size="6" class="ion-text-center">
         <div class="adventure-item-grid" [style.background]="getBackgroundColor(i)" (click)="onOptionSelected(option)">

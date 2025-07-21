@@ -21,6 +21,18 @@ export const routes: Routes  = [
   {
     path: 'adventure/:optionId',
     loadComponent: () => import('./adventure/adventure.page').then( m => m.AdventurePage)
+  },
+  {
+    path: 'practice/:optionId',
+    loadComponent: () => import('./practice/practice.page').then( m => m.PracticePage)
+  },
+  {
+    path: 'practice-detail/:optionId',
+    loadComponent: () => import('./practice-detail/practice-detail.page').then( m => m.PracticeDetailPage)
+  },
+  {
+    path: 'config',
+    loadComponent: () => import('./config/config.page').then( m => m.ConfigPage)
   }
   // Agregar aquí tus otras rutas
 ];

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón de regreso -->
+    @if (showBackButton) {
+      <ion-buttons slot="start">
+        <ion-back-button [defaultHref]="backButtonHref" [text]="backButtonText"></ion-back-button>
+      </ion-buttons>
+    }
+
+    <!-- Título centrado -->
+    @if (showTitleOnMobile) {
+      <ion-title>{{ title }}</ion-title>
+    } @else {
+      @if (!isWebMobile) {
+        <ion-title>{{ title }}</ion-title>
+      }
+    }
+
+    <!-- Icono de usuario -->
+    @if (showUserIcon) {
+      <ion-buttons slot="end">
+        <ion-button class="user-icon" (click)="onUserIconClick()">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
+  </ion-toolbar>
+</ion-header>

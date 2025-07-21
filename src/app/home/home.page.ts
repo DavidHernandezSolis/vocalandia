@@ -12,6 +12,7 @@ import {
   IonCardContent,
 
 } from '@ionic/angular/standalone';
+import { AppHeaderComponent } from '../shared/components/app-header/app-header.component';
 
 
 const back_colors = [
@@ -94,9 +95,7 @@ const practiceOptions = [
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonButton, IonButtons, IonBackButton, IonIcon,
-    IonLabel,
-    IonText,
+  imports: [AppHeaderComponent, IonContent, IonIcon,
     IonGrid,
     IonRow,
     IonCol,

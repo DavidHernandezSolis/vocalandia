@@ -15,7 +15,7 @@ import {
 
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { personCircleOutline } from 'ionicons/icons';
+import { personCircleOutline, playOutline, micOutline, pauseOutline, expandOutline } from 'ionicons/icons';
 import { AppHeaderComponent } from '../shared/components/app-header/app-header.component';
 
 const adventure_colors = [
@@ -44,29 +44,20 @@ const adventure_colors = [
   'linear-gradient(135deg, #1e40af 0%, #1d4ed8 100%)'
 ];
 
-const adventureOptions = [
-  { id: 'option10', title: 'J' },
-  { id: 'option11', title: 'K' },
-  { id: 'option12', title: 'L' },
-  { id: 'option13', title: 'M' },
-  { id: 'option14', title: 'N' },
-  { id: 'option15', title: 'O' },
-  { id: 'option16', title: 'P' },
-  { id: 'option17', title: 'Q' },
-];
-
 @Component({
-  selector: 'app-adventure',
-  templateUrl: './adventure.page.html',
-  styleUrls: ['./adventure.page.scss'],
+  selector: 'app-practice',
+  templateUrl: './practice.page.html',
+  styleUrls: ['./practice.page.scss'],
   standalone: true,
-  imports: [AppHeaderComponent, IonContent, 
+    imports: [AppHeaderComponent, IonContent, IonButton, IonIcon,
     IonGrid,
     IonRow,
     IonCol,
+    IonCard,
+    IonCardContent,
   ],
 })
-export class AdventurePage implements OnInit {
+export class PracticePage implements OnInit {
   optionId: string = '';
   selectedOption: any = null;
   title: string = '';
@@ -75,16 +66,37 @@ export class AdventurePage implements OnInit {
   isCapacitor: boolean = false;
   isMobile: boolean = false;
   isWebMobile: boolean = false;
+  
+  // Control de video
+  isPlaying: boolean = false;
+
+  practiceOptions: any = {
+    img: {
+      name: "A",
+      sonido: "a.mp3",
+      img: "a.png",
+    },
+    video: {
+      name: "A",
+      video: "a.mp3",
+    },
+  }
+
+  get practiceOptionsArray() {
+    return Object.keys(this.practiceOptions).map(key => ({
+      id: key,
+      ...this.practiceOptions[key]
+    }));
+  }
 
   // Datos de ejemplo
-  adventureOptions: any = adventureOptions;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private platform: Platform,
   ) {
-    addIcons({ personCircleOutline });
+    addIcons({ personCircleOutline, playOutline, micOutline, pauseOutline, expandOutline });
 
     // Validar plataformas
     this.isCapacitor = this.platform.is('capacitor');
@@ -119,13 +131,66 @@ export class AdventurePage implements OnInit {
   onOptionSelected(option: any) {
     console.log('Opción seleccionada:', option);
     // Navegar enviando datos en el state
-    this.router.navigate(['/practice', option.id], {
+    this.router.navigate(['/practice-detail', option.id], {
       state: {
-        title: option.title,
-        description: option.description,
-        icon: option.icon,
+        title: option.id,
       }
     });
+  }
+
+  playSound(option: any) {
+    console.log('Reproduciendo sonido para:', option.name);
+    // Aquí implementarías la reproducción del audio
+    // Ejemplo: new Audio(option.sonido || 'assets/sounds/' + option.name.toLowerCase() + '.mp3').play();
+    
+    // Simulación de reproducción
+    const audio = new Audio();
+    audio.src = option.sonido || `assets/sounds/${option.name.toLowerCase()}.mp3`;
+    audio.play().catch(error => {
+      console.error('Error reproduciendo audio:', error);
+      // Mostrar mensaje al usuario si no hay sonido disponible
+    });
+  }
+
+  recordSound(option: any) {
+    console.log('Iniciando grabación para:', option.name);
+    // Aquí implementarías la grabación de audio
+    // Podrias usar MediaRecorder API o un plugin de Capacitor
+    
+    // Por ahora, simulamos el proceso
+    alert(`¡Ahora repite la letra "${option.name}"! 🎤`);
+    
+    // Ejemplo de implementación futura:
+    // 1. Iniciar grabación
+    // 2. Mostrar indicador visual
+    // 3. Detener después de X segundos
+    // 4. Comparar con audio original (opcional)
+  }
+
+  toggleVideo(videoElement: HTMLVideoElement) {
+    if (videoElement.paused) {
+      videoElement.play();
+      this.isPlaying = true;
+    } else {
+      videoElement.pause();
+      this.isPlaying = false;
+    }
+  }
+
+  toggleFullscreen(videoElement: HTMLVideoElement) {
+    if (document.fullscreenElement) {
+      document.exitFullscreen();
+    } else {
+      videoElement.requestFullscreen().catch(err => {
+        console.error('Error al activar fullscreen:', err);
+      });
+    }
+  }
+
+  playVideo(option: any) {
+    console.log('Reproduciendo video:', option.name);
+    // El video se reproduce usando los controles nativos
+    // Aquí puedes agregar lógica adicional como tracking, etc.
   }
 
 }

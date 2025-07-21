@@ -4,6 +4,11 @@
 }
 
 
+ion-content {
+  --background: url('/assets/img/background.jpeg') center/100% 100% no-repeat;
+}
+
+
 .adventure-container {
   display: flex;
   flex-wrap: wrap;

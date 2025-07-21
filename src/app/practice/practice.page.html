@@ -1,0 +1,71 @@
+<app-header [title]="'Practicar ' + title" [showTitleOnMobile]="false" backButtonHref="/home" backButtonText="Atrás">
+</app-header>
+
+<ion-content>
+  <ion-grid>
+    @if (isMobile) {
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <h1 class="main-title ion-text-center">Practicar {{ title }}</h1>
+      </ion-col>
+    </ion-row>
+    }
+    <ion-row>
+      @for (option of practiceOptionsArray; track option.id) {
+      <ion-col size="12" sizeMd="6">
+        <ion-card class="practice-card">
+          <ion-card-content class="card-content">
+            <div class="card-image-container" [style.background]="getBackgroundColor($index)">
+              @if (option.video) {
+              <video #videoPlayer class="card-video" [src]="option.video" controls preload="metadata" playsinline>
+                Tu navegador no soporta video HTML5.
+              </video>
+
+              } @else if (option.img) {
+              <img [src]="option.img" [alt]="option.name" class="card-image">
+              } @else {
+              <div class="icon-placeholder">
+                <span class="icon-text">{{ option.name }}</span>
+              </div>
+              }
+            </div>
+            <h2 class="option-title">{{ option.name }}</h2>
+            <p class="option-description">Tipo: {{ option.id }}</p>
+
+            @if (option.video) {
+            <ion-row class="button-row">
+              <ion-col size="12" >
+                <ion-button fill="solid" color="success" expand="block" class="video-play-button"
+                  (click)="playVideo(option)">
+                  <ion-icon name="play-outline" slot="start"></ion-icon>
+                  Reproducir Video
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            }
+
+            @if (option.sonido) {
+            <ion-row class="button-row">
+              <ion-col size="12" sizeMd="6">
+                <ion-button fill="solid" color="primary" expand="block" class="action-button listen-button"
+                  (click)="playSound(option)">
+                  <ion-icon name="play-outline" slot="start"></ion-icon>
+                  Escuchar
+                </ion-button>
+              </ion-col>
+              <ion-col size="12" sizeMd="6">
+                <ion-button fill="solid" color="secondary" expand="block" class="action-button record-button"
+                  (click)="recordSound(option)">
+                  <ion-icon name="mic-outline" slot="start"></ion-icon>
+                  Repetir
+                </ion-button>
+              </ion-col>
+            </ion-row>
+            }
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      }
+    </ion-row>
+  </ion-grid>
+</ion-content>

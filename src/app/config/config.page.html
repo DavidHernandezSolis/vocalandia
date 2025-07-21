@@ -4,88 +4,384 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home" text="Atrás"></ion-back-button>
     </ion-buttons>
-
+    
     <!-- Título centrado -->
     @if (!isWebMobile) {
-    <ion-title>Configuraciones</ion-title>
+      <ion-title>Configuraciones</ion-title>
     }
-
-    <!-- Icono de usuario -->
-    <!-- <ion-buttons slot="end">
-      <ion-button class="user-icon">
-        <ion-icon name="person-circle-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
+    
+    <!-- Botón de logout si está logueado -->
+    @if (isLoggedIn) {
+      <ion-buttons slot="end">
+        <ion-button (click)="logout()">
+          <ion-icon name="log-out-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    }
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  
+  <!-- SECCIÓN DE AUTENTICACIÓN -->
+  @if (!isLoggedIn) {
+    <!-- LOGIN FORM -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="log-in-outline"></ion-icon>
+          Iniciar Sesión
+        </ion-card-title>
+        <ion-card-subtitle>Ingresa con tu usuario registrado</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Nombre *</ion-label>
+          <ion-input 
+            type="text" 
+            placeholder="Ingresa tu nombre"
+            [(ngModel)]="loginForm.name">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Edad *</ion-label>
+          <ion-input 
+            type="number" 
+            placeholder="Ingresa tu edad"
+            [(ngModel)]="loginForm.age">
+          </ion-input>
+        </ion-item>
+        <ion-button 
+          expand="block" 
+          (click)="login()" 
+          [disabled]="!loginForm.name || loginForm.age <= 0"
+          class="ion-margin-top">
+          <ion-icon name="log-in-outline" slot="start"></ion-icon>
+          Iniciar Sesión
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  } @else {
+    <!-- DATOS DEL USUARIO LOGUEADO -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="person-circle-outline"></ion-icon>
+          Perfil de Usuario
+        </ion-card-title>
+        <ion-card-subtitle>¡Hola {{ currentUser?.name }}!</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Nombre</ion-label>
+          <ion-input 
+            type="text" 
+            [(ngModel)]="currentUser!.name">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Edad</ion-label>
+          <ion-input 
+            type="number" 
+            [(ngModel)]="currentUser!.age">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Tutor</ion-label>
+          <ion-input 
+            type="text" 
+            placeholder="Nombre del tutor"
+            [(ngModel)]="currentUser!.tutor">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Terapeuta</ion-label>
+          <ion-input 
+            type="text" 
+            placeholder="Nombre del terapeuta"
+            [(ngModel)]="currentUser!.terapeuta">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Calificación</ion-label>
+          <ion-input 
+            type="number" 
+            min="0" 
+            max="100"
+            [(ngModel)]="currentUser!.calificacion">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Comentarios</ion-label>
+          <ion-textarea 
+            placeholder="Observaciones adicionales..."
+            rows="3"
+            [(ngModel)]="currentUser!.comentarios">
+          </ion-textarea>
+        </ion-item>
+        <ion-button 
+          expand="block" 
+          (click)="updateCurrentUser()" 
+          class="ion-margin-top">
+          <ion-icon name="save-outline" slot="start"></ion-icon>
+          Actualizar Datos
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  }
 
-  @if (!isLogin) {
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Detalles del usuario</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label>Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Edad</ion-label>
-        <ion-input type="number" [(ngModel)]="usuario.edad"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Tutor</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.tutor"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Terapeuta</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.terapeuta"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Calificación</ion-label>
-        <ion-input type="number" [(ngModel)]="usuario.calificacion"></ion-input>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
+  <!-- SECCIÓN DE ADMINISTRACIÓN (solo visible para usuarios logueados) -->
+  @if (isLoggedIn) {
+    
+    <!-- REGISTRO DE NUEVOS USUARIOS -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="person-add-outline"></ion-icon>
+          Registrar Nuevo Usuario
+        </ion-card-title>
+        <ion-card-subtitle>Agregar un nuevo usuario al sistema</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="stacked">Nombre *</ion-label>
+          <ion-input 
+            type="text" 
+            placeholder="Nombre completo"
+            [(ngModel)]="newUser.name">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Edad *</ion-label>
+          <ion-input 
+            type="number" 
+            placeholder="Edad en años"
+            [(ngModel)]="newUser.age">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Tutor</ion-label>
+          <ion-input 
+            type="text" 
+            placeholder="Nombre del tutor"
+            [(ngModel)]="newUser.tutor">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Terapeuta</ion-label>
+          <ion-input 
+            type="text" 
+            placeholder="Nombre del terapeuta"
+            [(ngModel)]="newUser.terapeuta">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Calificación inicial</ion-label>
+          <ion-input 
+            type="number" 
+            min="0" 
+            max="100" 
+            value="0"
+            [(ngModel)]="newUser.calificacion">
+          </ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Comentarios</ion-label>
+          <ion-textarea 
+            placeholder="Observaciones iniciales..."
+            rows="2"
+            [(ngModel)]="newUser.comentarios">
+          </ion-textarea>
+        </ion-item>
+        <ion-button 
+          expand="block" 
+          (click)="registerUser()" 
+          [disabled]="!newUser.name || newUser.age <= 0"
+          class="ion-margin-top">
+          <ion-icon name="person-add-outline" slot="start"></ion-icon>
+          Registrar Usuario
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- LISTA DE USUARIOS REGISTRADOS -->
+    @if (registeredUsers.length > 0) {
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>
+            Usuarios Registrados
+            <ion-badge color="primary">{{ registeredUsers.length }}</ion-badge>
+          </ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            @for (user of registeredUsers; track user.id) {
+              <ion-item>
+                <ion-label>
+                  <h2>{{ user.name }}</h2>
+                  <p>Edad: {{ user.age }} años</p>
+                  @if (user.tutor) {
+                    <p>Tutor: {{ user.tutor }}</p>
+                  }
+                  @if (user.calificacion > 0) {
+                    <p>Calificación: {{ user.calificacion }}/100</p>
+                  }
+                </ion-label>
+                @if (currentUser?.id === user.id) {
+                  <ion-badge color="success" slot="end">Actual</ion-badge>
+                }
+              </ion-item>
+            }
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    }
+
+    <!-- GESTIÓN DE DATOS PARA LA APLICACIÓN -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-icon name="add-outline"></ion-icon>
+          Gestión de Contenido
+        </ion-card-title>
+        <ion-card-subtitle>Agregar contenido para cada categoría de práctica</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        
+        <!-- FORMULARIO PARA AGREGAR NUEVO CONTENIDO -->
+        <ion-item>
+          <ion-label position="stacked">Categoría *</ion-label>
+          <ion-select 
+            placeholder="Selecciona una categoría"
+            [(ngModel)]="selectedPracticeCategory">
+            @for (option of practiceOptions; track option.id) {
+              <ion-select-option [value]="option.id">
+                {{ option.title }}
+              </ion-select-option>
+            }
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Nombre del elemento *</ion-label>
+          <ion-input 
+            type="text" 
+            placeholder="Ej: Vocal A, Número 1, Palabra Casa..."
+            [(ngModel)]="newPracticeItem.name">
+          </ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Descripción</ion-label>
+          <ion-textarea 
+            placeholder="Descripción opcional del elemento"
+            rows="2"
+            [(ngModel)]="newPracticeItem.description">
+          </ion-textarea>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Imagen</ion-label>
+          <input 
+            type="file" 
+            accept="image/*" 
+            (change)="onFileSelected($event, 'image')"
+            style="margin-top: 10px;">
+          @if (newPracticeItem.image) {
+            <ion-text color="success">
+              <p>Archivo: {{ newPracticeItem.image }}</p>
+            </ion-text>
+          }
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="stacked">Audio</ion-label>
+          <input 
+            type="file" 
+            accept="audio/*" 
+            (change)="onFileSelected($event, 'audio')"
+            style="margin-top: 10px;">
+          @if (newPracticeItem.audio) {
+            <ion-text color="success">
+              <p>Archivo: {{ newPracticeItem.audio }}</p>
+            </ion-text>
+          }
+        </ion-item>
+
+        <ion-button 
+          expand="block" 
+          (click)="addPracticeData()" 
+          [disabled]="!selectedPracticeCategory || !newPracticeItem.name"
+          class="ion-margin-top">
+          <ion-icon name="add-outline" slot="start"></ion-icon>
+          Agregar Elemento
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- RESUMEN DE CONTENIDO POR CATEGORÍA -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Contenido Disponible</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-accordion-group>
+          @for (option of practiceOptions; track option.id) {
+            <ion-accordion [value]="option.id">
+              <ion-item slot="header" [color]="option.color">
+                <ion-label>
+                  {{ option.title }}
+                  <ion-badge color="light" class="ion-margin-start">
+                    {{ getPracticeDataCount(option.id) }}
+                  </ion-badge>
+                </ion-label>
+              </ion-item>
+              
+              <div class="ion-padding" slot="content">
+                @if (practiceData[option.id].length === 0) {
+                  <ion-text color="medium">
+                    <p>No hay contenido disponible para esta categoría.</p>
+                  </ion-text>
+                } @else {
+                  <ion-list>
+                    @for (item of practiceData[option.id]; track item.id) {
+                      <ion-item>
+                        <ion-label>
+                          <h3>{{ item.name }}</h3>
+                          @if (item.description) {
+                            <p>{{ item.description }}</p>
+                          }
+                          <div class="file-info">
+                            @if (item.image) {
+                              <ion-text color="primary">
+                                <small>🖼️ {{ item.image }}</small>
+                              </ion-text>
+                            }
+                            @if (item.audio) {
+                              <ion-text color="secondary">
+                                <small>🔊 {{ item.audio }}</small>
+                              </ion-text>
+                            }
+                          </div>
+                        </ion-label>
+                        <ion-button 
+                          fill="clear" 
+                          color="danger" 
+                          slot="end"
+                          (click)="deletePracticeData(option.id, item.id)">
+                          <ion-icon name="trash-outline"></ion-icon>
+                        </ion-button>
+                      </ion-item>
+                    }
+                  </ion-list>
+                }
+              </div>
+            </ion-accordion>
+          }
+        </ion-accordion-group>
+      </ion-card-content>
+    </ion-card>
+
   }
-  @else {
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Iniciar sesión</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-item>
-        <ion-label>Nombre</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.nombre"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Edad</ion-label>
-        <ion-input type="number" [(ngModel)]="usuario.edad"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Tutor</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.tutor"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label>Terapeuta</ion-label>
-        <ion-input type="text" [(ngModel)]="usuario.terapeuta"></ion-input>
-      </ion-item>
-    </ion-card-content>
-  </ion-card>
-  }
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Subir datos de la aplicación</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <ion-list>
-        <!-- <ion-item *ngFor="let tema of practiceOptions.title">
-          <ion-label>{{ tema }}</ion-label>
-          <ion-input type="text" [(ngModel)]="datos[tema]"></ion-input>
-        </ion-item> -->
-      </ion-list>
-    </ion-card-content>
-  </ion-card>
+
 </ion-content>

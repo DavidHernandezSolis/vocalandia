@@ -53,7 +53,7 @@ const practiceOptions = [
     title: 'Vocales',
     description: 'Ejercicios de respiración y sonidos básicos',
     icon: 'AE',
-    // image: 'assets/images/vowels.png',
+    image: 'assets/images/vowels.png',
     iconClass: 'vowels-icon',
     color: 'danger'
   },

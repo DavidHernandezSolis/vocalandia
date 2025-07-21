@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón de regreso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Atrás"></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    @if (!isWebMobile) {
+    <ion-title>{{ title }}</ion-title>
+    }
+
+    <!-- Icono de usuario -->
+    <ion-buttons slot="end">
+      <ion-button class="user-icon">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <h1 class="main-title ion-text-center">Practicar {{ title }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+
+      @if (!isWebMobile) {
+      <!-- <ion-col size="12"> -->
+        <div class="adventure-container">
+          @for (option of adventureOptions; track option.id; let i = $index) {
+          <div class="adventure-item" [style.background]="getBackgroundColor(i)" (click)="onOptionSelected(option)">
+            {{ option.title }}
+          </div>
+          }
+        </div>
+      <!-- </ion-col> -->
+      }
+
+
+      @if (isWebMobile) {
+      @for (option of adventureOptions; track option.id; let i = $index) {
+      <ion-col size="6" class="ion-text-center">
+        <div class="adventure-item-grid" [style.background]="getBackgroundColor(i)" (click)="onOptionSelected(option)">
+          {{ option.title }}
+        </div>
+      </ion-col>
+      }
+      }
+    </ion-row>
+  </ion-grid>
+</ion-content>

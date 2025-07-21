@@ -13,6 +13,14 @@ export const routes: Routes  = [
   {
     path: 'welcome',
     loadComponent: () => import('./welcome/welcome.page').then( m => m.WelcomePage)
+  },
+  {
+    path: 'ddventure',
+    loadComponent: () => import('./ddventure/ddventure.page').then( m => m.DdventurePage)
+  },
+  {
+    path: 'adventure/:optionId',
+    loadComponent: () => import('./adventure/adventure.page').then( m => m.AdventurePage)
   }
   // Agregar aquí tus otras rutas
 ];

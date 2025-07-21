@@ -1,27 +1,85 @@
-#container {
+.main-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+}
+
+.practice-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  height: 300px;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.card-image-container {
+  height: 160px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.icon-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.icon-text {
+  color: black;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-weight: 700;
+  font-size: 4.5rem;
+}
+
+.card-content {
   text-align: center;
-
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  // padding: 24px 20px;
+  height: 100%;
+  // position: relative;
 }
 
-#container strong {
+.option-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 16px auto;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.option-icon-text {
+  color: white;
   font-size: 20px;
-  line-height: 26px;
+  font-weight: 600;
 }
 
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
+.option-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0 0 8px 0;
 }
 
-#container a {
-  text-decoration: none;
+.option-description {
+  font-size: 1.2rem;
+  color: #332f2f;
+  // margin: 0;
+  // line-height: 1.4;
 }

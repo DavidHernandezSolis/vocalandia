@@ -131,7 +131,7 @@
 ion-content {
     // --background: linear-gradient(135deg, #a8e6cf 0%, #88d8c0 50%, #6faadb 100%);
     // --background: linear-gradient(135deg, #a8e6cf 0%, #c1ded5 50%, #ccd7e1 100%); //opcion 1
-    --background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 50%, #ebf3fd 100%);
+    // --background: linear-gradient(135deg, #e8f4f8 0%, #d6eaf8 50%, #ebf3fd 100%);
 
     // --background: linear-gradient(135deg, #c2e9da 0%, #bed6ce 50%, #ccd7e1 100%);
     --color: var(--ion-text-color);
@@ -139,10 +139,19 @@ ion-content {
 
 // Headers con estilo amigable
 ion-header {
+    .toolbar-container{
+        height: 100px;
+    }
+     height: 100px;
+
     ion-toolbar {
+        height: 100px;
+            align-content: center;
         // --background: linear-gradient(135deg, #74b9ff, #00cec9); 
         // --background: linear-gradient(90deg, #69d0ce, #4dcbc7); //opcion 1
-        --background:  #4dcbc7;
+        --background: linear-gradient(130deg, #4dcbc7, #65cbbc); //opcion 2
+        // --background:  #4dcbc7; //#60c4a6
+        // --background:  linear-gradient(135deg, #a8e6cf 0%, #88d8c0 50%, #6faadb 100%)
         // --background: linear-gradient(135deg, #6c5ce7, #74b9ff);
 
         --color: white;
@@ -150,10 +159,31 @@ ion-header {
         --min-height: 70px;
 
         ion-title {
-            font-size: 24px;
+             font-size: 2rem;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+            color: #000000;
             text-align: center;
+        }
+
+        .user-icon {
+            font-size: 3.3rem;
+            color: #e8a943
+        }
+
+
+        ion-back-button {
+            background: linear-gradient(45deg, #d8ff53, #e8bf43);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            /* transition: all 0.3s ease; */
+            letter-spacing: 1px;
+            color: #000000;
         }
 
         ion-buttons {

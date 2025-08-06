@@ -11,7 +11,7 @@
   # Variables de entorno. Tu README.md especifica Node 18 o superior.
   # Es una buena práctica fijar la versión.
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 # Redirección para Single Page Applications (SPA) como Angular.
 # Esto asegura que todas las rutas (ej. /home, /practice/A)

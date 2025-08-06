@@ -1,0 +1,22 @@
+# c:\Users\dhsolis\Documents\APP_DAVID\vocalandia\netlify.toml
+[build]
+  # Comando para construir tu aplicación para producción.
+  # Tu README.md indica que es `npm run build` o `ionic build`.
+  command = "npm run build"
+
+  # El directorio que contiene los archivos estáticos después de la compilación.
+  # Tu README.md indica que es la carpeta `www`.
+  publish = "www"
+
+  # Variables de entorno. Tu README.md especifica Node 18 o superior.
+  # Es una buena práctica fijar la versión.
+[build.environment]
+  NODE_VERSION = "18"
+
+# Redirección para Single Page Applications (SPA) como Angular.
+# Esto asegura que todas las rutas (ej. /home, /practice/A)
+# sean manejadas por tu index.html y el router de Angular.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

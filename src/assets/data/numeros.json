@@ -1,0 +1,62 @@
+[
+  {
+    "caracter": "1",
+    "palabra": "uno",
+    "consejo": "Cuenta con tu dedo índice para decir uno.",
+    "sonido": "/u-no/"
+  },
+  {
+    "caracter": "2",
+    "palabra": "dos",
+    "consejo": "Forma una V con tus dedos para decir dos.",
+    "sonido": "/d-os/"
+  },
+  {
+    "caracter": "3",
+    "palabra": "tres",
+    "consejo": "Sonríe y muestra tres dedos al decir tres.",
+    "sonido": "/t-r-e-s/"
+  },
+  {
+    "caracter": "4",
+    "palabra": "cuatro",
+    "consejo": "Abre bien la boca al decir cua-tro.",
+    "sonido": "/cu-a-tro/"
+  },
+  {
+    "caracter": "5",
+    "palabra": "cinco",
+    "consejo": "Di cinco como si soplaras una vela: sss...",
+    "sonido": "/c-i-n-co/"
+  },
+  {
+    "caracter": "6",
+    "palabra": "seis",
+    "consejo": "Haz una gran sonrisa al decir seis.",
+    "sonido": "/s-e-i-s/"
+  },
+  {
+    "caracter": "7",
+    "palabra": "siete",
+    "consejo": "Di sie-te despacito para que suene claro.",
+    "sonido": "/si-e-te/"
+  },
+  {
+    "caracter": "8",
+    "palabra": "ocho",
+    "consejo": "Redondea bien la boca al decir 'ocho'.",
+    "sonido": "/o-cho/"
+  },
+  {
+    "caracter": "9",
+    "palabra": "nueve",
+    "consejo": "Pronuncia suave el sonido 'nue' al empezar.",
+    "sonido": "/nue-ve/"
+  },
+  {
+    "caracter": "10",
+    "palabra": "diez",
+    "consejo": "Di diez juntando los dientes suavemente.",
+    "sonido": "/d-i-e-z/"
+  }
+]

@@ -3,13 +3,15 @@
 
 <ion-content>
   <ion-grid>
-    @if (isMobile) {
+    <!-- @if (isMobile) { -->
     <ion-row class="ion-justify-content-center">
       <ion-col size="12">
-        <h1 class="main-title ion-text-center">Practicar {{ title }}</h1>
+        <h1 class="main-title ion-text-center">Practicar
+          {{ ['1','2','3','4','5','6','7','8','9','10'].includes(title.toString().trim()) ? 'el numero ' : 'la letra '}}
+          {{ title }}</h1>
       </ion-col>
     </ion-row>
-    }
+    <!-- } -->
     <ion-row>
       @for (option of practiceOptionsArray; track option.id) {
       <ion-col size="12" sizeMd="6">
@@ -17,24 +19,71 @@
           <ion-card-content class="card-content">
             <div class="card-image-container" [style.background]="getBackgroundColor($index)">
               @if (option.video) {
-              <video #videoPlayer class="card-video" [src]="option.video" controls preload="metadata" playsinline>
+              <!-- VIDEO -->
+              <video #videoPlayer class="card-video" data-id="video" [src]="option.video" controls preload="metadata"
+                playsinline>
                 Tu navegador no soporta video HTML5.
               </video>
 
-              } @else if (option.img) {
+              }
+              @else if (option.img) {
+              <!-- IMAGEN -->
               <img [src]="option.img" [alt]="option.name" class="card-image">
+
+
               } @else {
+
               <div class="icon-placeholder">
                 <span class="icon-text">{{ option.name }}</span>
               </div>
+
               }
             </div>
-            <h2 class="option-title">{{ option.name }}</h2>
-            <p class="option-description">Tipo: {{ option.id }}</p>
+
+            <!-- <p class="option-description">Tipo: {{ option.id }}</p>  -->
+            @if (option.img) {
+            <div class="consejo-container">
+              <ion-text class="consejo-letra">
+                {{
+                ['1','2','3','4','5','6','7','8','9','10'].includes(this.practiceOptions?.img?.name?.toString()?.trim())
+                ? 'El número ' + this.practiceOptions.img.name
+                : 'La letra ' + this.practiceOptions.img.name }}
+              </ion-text>
+              <br>
+              <!-- @if (this.selectedOption?.consejo) { -->
+              <ion-text color="medium"  class="consejo-texto">
+                💡 Ejemplo: {{ this.selectedOption.palabra }}
+              </ion-text>
+              <br>
+              <ion-text class="consejo-texto">
+                💡 Consejo: {{ this.selectedOption.consejo }}
+              </ion-text>
+              <br>
+              <ion-text color="medium" class="consejo-sonido">
+                🔉 Sonido: <strong>{{ this.selectedOption.sonido }}</strong>
+              </ion-text>
+              <!-- } -->
+
+
+              <!-- Botón para reproducir la letra -->
+              <ion-button expand="block" color="primary" (click)="reproducirLetra(this.selectedOption.caracter)">
+                🔊 Escuchar  {{
+                ['1','2','3','4','5','6','7','8','9','10'].includes(this.practiceOptions?.img?.name?.toString()?.trim())
+                ? 'El número ' 
+                : 'La letra ' }} "{{ this.selectedOption.caracter }}"
+              </ion-button>
+
+              <!-- Botón para reproducir la palabra con velocidad 0.8 -->
+              <ion-button expand="block" color="success" (click)="reproducirPalabra(this.selectedOption.palabra)">
+                🗣️ Escuchar la palabra "{{ this.selectedOption.palabra }}"
+              </ion-button>
+            </div>
+            }
+
 
             @if (option.video) {
             <ion-row class="button-row">
-              <ion-col size="12" >
+              <ion-col size="12">
                 <ion-button fill="solid" color="success" expand="block" class="video-play-button"
                   (click)="playVideo(option)">
                   <ion-icon name="play-outline" slot="start"></ion-icon>
@@ -44,7 +93,7 @@
             </ion-row>
             }
 
-            @if (option.sonido) {
+            <!-- @if (option.sonido) {
             <ion-row class="button-row">
               <ion-col size="12" sizeMd="6">
                 <ion-button fill="solid" color="primary" expand="block" class="action-button listen-button"
@@ -61,7 +110,7 @@
                 </ion-button>
               </ion-col>
             </ion-row>
-            }
+            } -->
           </ion-card-content>
         </ion-card>
       </ion-col>

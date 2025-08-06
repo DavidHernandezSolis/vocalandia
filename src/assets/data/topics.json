@@ -1,0 +1,23 @@
+[
+  {
+    "id": "abecedario",
+    "title": "Abecedario",
+    "description": "Aprender las letras del abecedario ayuda a mejorar el reconocimiento fonético y la pronunciación.",
+    "icon": "ABC",
+    "ruta": "assets/data/abecedario.json"
+  },
+  {
+    "id": "vocales",
+    "title": "Vocales",
+    "description": "Las vocales son la base del lenguaje hablado. Este tema se enfoca en su correcta articulación.",
+    "icon": "A-E",
+    "ruta": "assets/data/vocales.json"
+  },
+  {
+    "id": "numeros",
+    "title": "Números",
+    "description": "Aprender números mejora la capacidad de contar y la comprensión de cantidades.",
+    "icon": "1-9",
+    "ruta": "assets/data/numeros.json"
+  }
+]

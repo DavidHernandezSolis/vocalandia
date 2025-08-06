@@ -1,0 +1,32 @@
+[
+  {
+    "caracter": "a",
+    "palabra": "Árbol",
+    "consejo": "Abre bien la boca, como si dijeras '¡Ahhh!' en el doctor.",
+    "sonido": "/a/"
+  },
+  {
+    "caracter": "e",
+    "palabra": "Elefante",
+    "consejo": "Sonríe al decir 'e', como si estuvieras muy feliz.",
+    "sonido": "/e/"
+  },
+  {
+    "caracter": "i",
+    "palabra": "Iglú",
+    "consejo": "Estira los labios como si estuvieras diciendo 'iiiii'.",
+    "sonido": "/i/"
+  },
+  {
+    "caracter": "o",
+    "palabra": "Oveja",
+    "consejo": "Haz una boca redonda, como si soplaras una vela.",
+    "sonido": "/o/"
+  },
+  {
+    "caracter": "u",
+    "palabra": "Uva",
+    "consejo": "Haz una boquita pequeña, como para dar un beso.",
+    "sonido": "/u/"
+  }
+]

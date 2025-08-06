@@ -33,6 +33,10 @@ export const routes: Routes  = [
   {
     path: 'config',
     loadComponent: () => import('./config/config.page').then( m => m.ConfigPage)
+  },
+  {
+    path: 'config-topics',
+    loadComponent: () => import('./config-topics/config-topics.page').then( m => m.ConfigTopicsPage)
   }
   // Agregar aquí tus otras rutas
 ];

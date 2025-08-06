@@ -10,7 +10,7 @@ ion-content {
 .practice-card {
   cursor: pointer;
   transition: all 0.3s ease;
-  height: 300px;
+  height: auto;
   overflow: hidden;
 
   &:hover {
@@ -86,4 +86,16 @@ ion-content {
   color: #332f2f;
   // margin: 0;
   // line-height: 1.4;
+}
+
+ion-row {
+  align-items: stretch; // 👈 esto hace que todas las columnas tengan el mismo alto
+}
+
+ion-col {
+  display: flex;
+}
+
+.practice-card {
+  flex: 1; // 👈 el ion-card ocupa todo el espacio del ion-col
 }

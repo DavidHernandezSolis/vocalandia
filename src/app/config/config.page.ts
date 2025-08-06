@@ -386,6 +386,20 @@ export class ConfigPage implements OnInit {
 
 
 
+  //  onOptionSelected(option: any) {
+  //   console.log('Opción seleccionada:', option);
+  //   // Navegar enviando datos en el state
+  //   this.router.navigate(['/config-topics/:uuid', option.id], {
+  //     state: {
+  //       title: option.title,
+  //     }
+  //   });
+  // }
+
+
+  congifTopics() {
+    this.router.navigate(['/config-topics']);
+  }
 
 
   // currentUser: Usuario | null = null;

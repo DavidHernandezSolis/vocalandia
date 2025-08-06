@@ -17,6 +17,7 @@ import {
 import { addIcons } from 'ionicons';
 import { personCircleOutline } from 'ionicons/icons';
 import { AppHeaderComponent } from '../shared/components/app-header/app-header.component';
+import { DataLocalService } from "../services/data-local.service";
 
 const adventure_colors = [
   // Morado intenso - creatividad potente
@@ -70,6 +71,7 @@ export class AdventurePage implements OnInit {
   optionId: string = '';
   selectedOption: any = null;
   title: string = '';
+  tema : string = '';
 
   // Validaciones de plataforma
   isCapacitor: boolean = false;
@@ -77,12 +79,13 @@ export class AdventurePage implements OnInit {
   isWebMobile: boolean = false;
 
   // Datos de ejemplo
-  adventureOptions: any = adventureOptions;
+  adventureOptions: any = [];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private platform: Platform,
+    private dataLocalService: DataLocalService
   ) {
     addIcons({ personCircleOutline });
 
@@ -108,6 +111,11 @@ export class AdventurePage implements OnInit {
       this.selectedOption = navigation.extras.state;
       this.title = this.selectedOption.title
       console.log('Datos recibidos:', this.selectedOption);
+      // Cargar contenido del tema
+      this.dataLocalService.obtenerContenidoDeTema(this.selectedOption.ruta).subscribe(data => {
+        console.log('Contenido del tema:', data);
+        this.adventureOptions = data;
+      });
     }
   }
   getBackgroundColor(index: number): string {
@@ -119,11 +127,15 @@ export class AdventurePage implements OnInit {
   onOptionSelected(option: any) {
     console.log('Opción seleccionada:', option);
     // Navegar enviando datos en el state
-    this.router.navigate(['/practice', option.id], {
+    this.router.navigate(['/practice', option.caracter], {
       state: {
-        title: option.title,
-        description: option.description,
-        icon: option.icon,
+        title: option.caracter.toUpperCase(),
+        // description: option.description,
+        // icon: option.icon,
+        caracter: option.caracter,
+        palabra: option.palabra,
+        tema:  this.selectedOption.tema,
+        ...option
       }
     });
   }

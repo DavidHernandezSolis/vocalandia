@@ -17,9 +17,9 @@
       @if (!isMobile) {
       <!-- <ion-col size="12"> -->
         <div class="adventure-container">
-          @for (option of adventureOptions; track option.id; let i = $index) {
-          <div class="adventure-item" [style.background]="getBackgroundColor(i)" (click)="onOptionSelected(option)">
-            {{ option.title }}
+          @for (option of adventureOptions; track option.caracter; let i = $index) {
+          <div  class="adventure-item" [style.background]="getBackgroundColor(i)" (click)="onOptionSelected(option)">
+            {{ option.caracter }}
           </div>
           }
         </div>
@@ -28,10 +28,10 @@
 
 
       @if (isMobile) {
-      @for (option of adventureOptions; track option.id; let i = $index) {
+      @for (option of adventureOptions; track option.caracter; let i = $index) {
       <ion-col size="6" class="ion-text-center">
         <div class="adventure-item-grid" [style.background]="getBackgroundColor(i)" (click)="onOptionSelected(option)">
-          {{ option.title }}
+          {{ option.caracter }}
         </div>
       </ion-col>
       }

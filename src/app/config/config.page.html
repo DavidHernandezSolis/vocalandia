@@ -177,27 +177,32 @@
         <ion-label position="floating">Edad</ion-label>
         <ion-input [(ngModel)]="child.age" type="number" required></ion-input>
       </ion-item>
-      <ion-button expand="block" (click)="registerChild()" [disabled]="!child.name || !child.age" class="ion-margin-top()">Agregar Paciente</ion-button>
+      <ion-button expand="block" (click)="registerChild()" [disabled]="!child.name || !child.age"
+        class="ion-margin-top()">Agregar Paciente</ion-button>
     </ion-card-content>
   </ion-card>
 
-        <!-- tabla de pacientes -->
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>
-            Pacientes asignados
-          </ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-list>
-            @for (child of listPatientsByTutor; track child.id) {
-            <ion-item>
-              <ion-label>{{ child.name }} - {{ child.age }} años</ion-label>
-            </ion-item>
-            }
-          </ion-list>
-        </ion-card-content>
-      </ion-card>
+  <!-- tabla de pacientes -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Pacientes asignados
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        @for (child of listPatientsByTutor; track child.id) {
+        <ion-item>
+          <ion-label>{{ child.name }} - {{ child.age }} años</ion-label>
+        </ion-item>
+        }
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="congifTopics()"
+    class="ion-margin-top()">Ir a configurar temas y actividades</ion-button>
+
 
   <!-- <ion-card>
       <ion-card-header>

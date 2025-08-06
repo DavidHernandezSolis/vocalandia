@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar>
+    <!-- Botón de regreso -->
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home" text="Atrás"></ion-back-button>
+    </ion-buttons>
+
+    <!-- Título centrado -->
+    @if (!isWebMobile) {
+    <ion-title>{{ title }}</ion-title>
+    }
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Agregar Nuevo Tema
+      </ion-card-title>
+    </ion-card-header>
+    <form (submit)="submitTopic(); $event.preventDefault()">
+      <ion-item>
+        <ion-label position="floating">Título</ion-label>
+        <ion-input [(ngModel)]="topic.title" name="title" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Descripción</ion-label>
+        <ion-textarea [(ngModel)]="topic.description" name="description"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Imagen</ion-label>
+        <input type="file" (change)="onFileChange($event)" />
+      </ion-item>
+
+      <ion-button expand="block" type="submit" [disabled]="loading">
+        {{ loading ? 'Guardando...' : 'Guardar Tema' }}
+      </ion-button>
+    </form>
+  </ion-card>
+
+  <!-- Listado de temas -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        Temas Existentes
+      </ion-card-title>
+    </ion-card-header>
+    <ion-item *ngFor="let t of topicsList" >
+      <ion-thumbnail slot="start" *ngIf="t.image_url">
+        <img [src]="t.image_url" />
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ t.title }} - {{ t.order_index }}</h2>
+        <p>{{ t.description }}</p>
+      </ion-label>
+      <ion-buttons slot="end" >
+        <ion-button fill="solid" size="large" (click)="selectTopic(t)">
+          <ion-icon name="create-outline" style="color: blue" slot="icon-only"></ion-icon>
+        </ion-button>
+
+        <ion-button fill="solid" size="large"  (click)="viewDetails(t)">
+          <ion-icon name="information-circle-outline" style="color: blue" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-card>
+
+  <!-- <ion-card *ngIf="selectedTopic">
+    <ion-card-header>
+      <ion-card-title>{{ selectedTopic.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{ selectedTopic.description }}</p>
+      <img *ngIf="selectedTopic.image_url" [src]="selectedTopic.image_url" />
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>

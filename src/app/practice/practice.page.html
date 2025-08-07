@@ -45,7 +45,7 @@
             <div class="consejo-container">
               <ion-text class="consejo-letra">
                 {{
-                ['1','2','3','4','5','6','7','8','9','10'].includes(this.practiceOptions?.img?.name?.toString()?.trim())
+                [ '0', '1','2','3','4','5','6','7','8','9','10'].includes(this.practiceOptions?.img?.name?.toString()?.trim())
                 ? 'El número ' + this.practiceOptions.img.name
                 : 'La letra ' + this.practiceOptions.img.name }}
               </ion-text>
@@ -68,7 +68,7 @@
               <!-- Botón para reproducir la letra -->
               <ion-button expand="block" color="primary" (click)="reproducirLetra(this.selectedOption.caracter)">
                 🔊 Escuchar  {{
-                ['1','2','3','4','5','6','7','8','9','10'].includes(this.practiceOptions?.img?.name?.toString()?.trim())
+                ['0','1','2','3','4','5','6','7','8','9','10'].includes(this.practiceOptions?.img?.name?.toString()?.trim())
                 ? 'El número ' 
                 : 'La letra ' }} "{{ this.selectedOption.caracter }}"
               </ion-button>

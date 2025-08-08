@@ -139,7 +139,6 @@ export class PracticePage implements OnInit, AfterViewInit {
       this.practiceOptions.img.img = 'assets/img/' + this.selectedOption.tema + '/' + this.selectedOption.caracter + '.jpeg';
       this.practiceOptions.video.name = this.selectedOption.caracter;
       this.practiceOptions.video.video = 'assets/video/' + this.selectedOption.tema + '/' + this.selectedOption.caracter.toLowerCase().toString() + '.mp4';
-      if(this.selectedOption.caracter.toLowerCase().toString() == '0')  this.practiceOptions.video.video =  'assets/video/' + this.selectedOption.tema + '/' + this.selectedOption.palabra.toLowerCase().toString() + '.mp4';
       console.log('Opciones de práctica:', this.practiceOptions);
     }
   }
